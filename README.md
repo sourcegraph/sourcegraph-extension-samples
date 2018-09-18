@@ -4,6 +4,8 @@
 
 Take your Sourcegraph extension development further by viewing our sample extensions. Each demonstrates different capabilities of the Sourcegraph Extension API.
 
+## Extension Samples
+
 * [Hello World](hello-world)
 
 Subscribe to this repository as we'll be adding many more samples in the future.
