@@ -31,21 +31,26 @@ export function activate(): void {
         toArray()
       )
       .subscribe(annotations => {
-        sourcegraph.app.activeWindow.visibleViewComponents[0].setDecorations(
-          null,
-          annotations.map(({ downloads, lineNumber, pkg }) => ({
-            range: new sourcegraph.Range(
-              new sourcegraph.Position(lineNumber, 0),
-              new sourcegraph.Position(lineNumber, 0)
-            ),
-            after: {
-              contentText: " View on npm (" + downloads + " DLs last week)",
-              linkURL: `https://www.npmjs.com/package/${pkg}`,
-              backgroundColor: "pink",
-              color: "black"
-            }
-          }))
-        );
+        if (
+          sourcegraph.app.activeWindow &&
+          sourcegraph.app.activeWindow.visibleViewComponents.length > 0
+        ) {
+          sourcegraph.app.activeWindow.visibleViewComponents[0].setDecorations(
+            null,
+            annotations.map(({ downloads, lineNumber, pkg }) => ({
+              range: new sourcegraph.Range(
+                new sourcegraph.Position(lineNumber, 0),
+                new sourcegraph.Position(lineNumber, 0)
+              ),
+              after: {
+                contentText: " View on npm (" + downloads + " DLs last week)",
+                linkURL: `https://www.npmjs.com/package/${pkg}`,
+                backgroundColor: "pink",
+                color: "black"
+              }
+            }))
+          );
+        }
       });
   });
 }
