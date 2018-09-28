@@ -3,6 +3,7 @@
   "publisher": "chris",
   "title": "npm import stats",
   "description": "Displays stats about npm packages next to import statements.",
+  "repository": "https://github.com/sourcegraph/sourcegraph-extension-samples.git",
   "activationEvents": [
     "*"
   ],
