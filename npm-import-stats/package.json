@@ -1,0 +1,23 @@
+{
+  "name": "sourcegraph-npm-import-stats",
+  "publisher": "chris",
+  "title": "npm import stats",
+  "description": "Displays stats about npm packages next to import statements.",
+  "activationEvents": [
+    "*"
+  ],
+  "main": "dist/extension.js",
+  "scripts": {
+    "sourcegraph:prepublish": "parcel build --no-minify src/extension.ts"
+  },
+  "devDependencies": {
+    "@types/lru-cache": "^4.1.1",
+    "parcel-bundler": "^1.9.7",
+    "sourcegraph": "^16.0.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "rxjs": "^6.3.3",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
