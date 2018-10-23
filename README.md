@@ -1,15 +1,15 @@
-# Sourcegraph Extension Samples
+# Sourcegraph extension samples
 
 ![](https://user-images.githubusercontent.com/1976/45107396-53d56880-b0ee-11e8-96e9-ca83e991101c.png)
 
-Take your Sourcegraph extension development further by viewing our sample extensions. Each demonstrates different capabilities of the Sourcegraph Extension API.
+Take your Sourcegraph extension development further by viewing our sample extensions. Each demonstrates different capabilities of the [Sourcegraph extension API](https://github.com/sourcegraph/sourcegraph-extension-api).
 
 Subscribe to this repository as we'll be adding many more samples in the future.
 
-## Extension Samples
+## Extension samples
 
-* [Hello World](hello-world)
-* [Token Highlights and line decoration](token-highlights)
+* [Hello world](hello-world)
+* [Token highlights and line decoration](token-highlights)
 
 
 ## Can't find the functionality you're after?
