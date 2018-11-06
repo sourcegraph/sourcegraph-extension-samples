@@ -1,4 +1,4 @@
-# npm import stats [Sourcegraph extension](https://github.com/sourcegraph/sourcegraph-extension-api)
+# npm import stats [Sourcegraph extension](https://docs.sourcegraph.com/extensions)
 
 This example extension will display a link to the npm package next to import statements in JavaScript/TypeScript.
 
