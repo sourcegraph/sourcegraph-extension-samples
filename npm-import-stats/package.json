@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/lru-cache": "^4.1.1",
-    "parcel-bundler": "^1.9.7",
+    "parcel-bundler": "^1.10.0",
     "sourcegraph": "^16.0.0",
     "typescript": "^3.0.3"
   },
