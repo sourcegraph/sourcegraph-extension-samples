@@ -1,3 +1,3 @@
 # WIP: Line counter [Sourcegraph extension](https://docs.sourcegraph.com/extensions)
 
-Get the number of lines in a file by clicking the **Line Count** button.
+Display the name and number of lines of code in a file.
