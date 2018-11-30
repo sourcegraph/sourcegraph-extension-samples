@@ -1,7 +1,7 @@
 {
-  "name": "sourcegraph-line-counter",
-  "title": "WIP: Sourcegraph Line Counter",
-  "description": "Get the number of lines in a file by clicking the Line Count button.",
+  "name": "line-counter",
+  "title": "WIP: Line Counter",
+  "description": "Display the name and number of lines of code in a file.",
   "publisher": "sourcegraph",
   "activationEvents": [
     "*"
@@ -11,10 +11,6 @@
       {
         "id": "linecounter.get",
         "command": "linecounter.displayLineCount",
-        "commandArguments": [
-          "${resource.uri}",
-          "${resource.textContent}"
-        ],
         "actionItem": {
           "label": "Line Count",
           "description": "The line count for this file"
