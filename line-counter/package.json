@@ -9,8 +9,10 @@
   "contributes": {
     "actions": [
       {
-        "id": "linecounter.get",
+        "id": "linecounter.displayLineCountAction",
         "command": "linecounter.displayLineCount",
+        "title": "Display the line count for this file",
+        "category": "Line Counter",
         "actionItem": {
           "label": "Line Count",
           "description": "The line count for this file"
@@ -20,11 +22,16 @@
     "menus": {
       "editor/title": [
         {
-          "action": "linecounter.get",
+          "action": "linecounter.displayLineCountAction",
           "when": "resource"
         }
       ],
-      "commandPalette": []
+      "commandPalette": [
+        {
+          "action": "linecounter.displayLineCountAction",
+          "when": "resource"
+        }
+      ]
     },
     "configuration": {}
   },
