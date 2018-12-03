@@ -7,7 +7,6 @@
 - Works on all code on Sourcegraph
 - Runs entirely client-side in the browser (your code remains local and is not sent to any server)
 
-
 ```json
 {
  "name": "sourcegraph-npm-stats",

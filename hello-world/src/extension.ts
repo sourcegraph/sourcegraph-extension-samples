@@ -1,7 +1,9 @@
 import * as sourcegraph from "sourcegraph";
 
-export function activate(): void {
-  sourcegraph.languages.registerHoverProvider(["*"], {
-    provideHover: () => ({ contents: { value: "Hello, world! 🎉🎉🎉" } })
-  });
+export function activate(ctx: sourcegraph.ExtensionContext): void {
+  ctx.subscriptions.add(
+    sourcegraph.languages.registerHoverProvider(["*"], {
+      provideHover: () => ({ contents: { value: "Hello, world! 🎉🎉🎉" } })
+    })
+  )
 }

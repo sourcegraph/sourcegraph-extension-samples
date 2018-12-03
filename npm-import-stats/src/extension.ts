@@ -13,44 +13,46 @@ const fetchDownloads = (pkg: string): Observable<number> => {
   );
 };
 
-export function activate(): void {
-  sourcegraph.workspace.onDidOpenTextDocument.subscribe(doc => {
-    from(doc.text.split("\n"))
-      .pipe(
-        concatMap((line, lineNumber) => {
-          const match = /^import.*from .(\w+)/.exec(line);
-          if (match && match.length > 1) {
-            const pkg = match[1];
-            return fetchDownloads(pkg).pipe(
-              map(downloads => ({ downloads, lineNumber, pkg }))
+export function activate(ctx:sourcegraph.ExtensionContext): void {
+  ctx.subscriptions.add(
+    sourcegraph.workspace.onDidOpenTextDocument.subscribe(doc => {
+      from(doc.text.split("\n"))
+        .pipe(
+          concatMap((line, lineNumber) => {
+            const match = /^import.*from .(\w+)/.exec(line);
+            if (match && match.length > 1) {
+              const pkg = match[1];
+              return fetchDownloads(pkg).pipe(
+                map(downloads => ({ downloads, lineNumber, pkg }))
+              );
+            } else {
+              return EMPTY;
+            }
+          }),
+          toArray()
+        )
+        .subscribe(annotations => {
+          if (
+            sourcegraph.app.activeWindow &&
+            sourcegraph.app.activeWindow.visibleViewComponents.length > 0
+          ) {
+            sourcegraph.app.activeWindow.visibleViewComponents[0].setDecorations(
+              null,
+              annotations.map(({ downloads, lineNumber, pkg }) => ({
+                range: new sourcegraph.Range(
+                  new sourcegraph.Position(lineNumber, 0),
+                  new sourcegraph.Position(lineNumber, 0)
+                ),
+                after: {
+                  contentText: " View on npm (" + downloads + " DLs last week)",
+                  linkURL: `https://www.npmjs.com/package/${pkg}`,
+                  backgroundColor: "pink",
+                  color: "black"
+                }
+              }))
             );
-          } else {
-            return EMPTY;
           }
-        }),
-        toArray()
-      )
-      .subscribe(annotations => {
-        if (
-          sourcegraph.app.activeWindow &&
-          sourcegraph.app.activeWindow.visibleViewComponents.length > 0
-        ) {
-          sourcegraph.app.activeWindow.visibleViewComponents[0].setDecorations(
-            null,
-            annotations.map(({ downloads, lineNumber, pkg }) => ({
-              range: new sourcegraph.Range(
-                new sourcegraph.Position(lineNumber, 0),
-                new sourcegraph.Position(lineNumber, 0)
-              ),
-              after: {
-                contentText: " View on npm (" + downloads + " DLs last week)",
-                linkURL: `https://www.npmjs.com/package/${pkg}`,
-                backgroundColor: "pink",
-                color: "black"
-              }
-            }))
-          );
-        }
-      });
-  });
+        });
+    })
+  )
 }

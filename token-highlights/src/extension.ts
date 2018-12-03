@@ -34,16 +34,18 @@ const highlightMatchingLines = (text, token) => {
   );
 };
 
-export function activate(): void {
-  sourcegraph.languages.registerHoverProvider(["*"], {
-    provideHover: (doc, pos) => {
-      const token = tokenAt(doc.text, pos);
+export function activate(ctx:sourcegraph.ExtensionContext): void {
+  ctx.subscriptions.add(
+    sourcegraph.languages.registerHoverProvider(["*"], {
+      provideHover: (doc, pos) => {
+        const token = tokenAt(doc.text, pos);
 
-      if (token) {
-        highlightMatchingLines(doc.text, token);
+        if (token) {
+          highlightMatchingLines(doc.text, token);
+        }
+
+        return null;
       }
-
-      return null;
-    }
-  });
+    })
+  )
 }
