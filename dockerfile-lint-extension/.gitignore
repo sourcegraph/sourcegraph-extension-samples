@@ -1,0 +1,15 @@
+dist/
+node_modules/
+.idea
+.python_history
+.cache
+.python_history
+.editorconfig
+Pipfile
+.vscode
+__pycache__
+terraform.tfvars
+.terraform
+terraform.tfstate*
+terraform.tfvars
+.terraform.*

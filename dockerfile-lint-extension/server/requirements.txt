@@ -1,0 +1,6 @@
+flask
+flake8
+pytest
+pytest-flask
+flask-cors
+zappa

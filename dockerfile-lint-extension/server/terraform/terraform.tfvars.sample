@@ -1,0 +1,19 @@
+access_key = ""
+
+secret_key = ""
+
+region     = ""
+  
+vpc_id = ""
+
+subnet_id = ""
+
+key_name = ""
+
+public_key = ""
+
+instance_type = ""
+
+# To find the list of Amazon Liunx AMI IDs for each region, go to
+# https://aws.amazon.com/amazon-linux-2/release-notes/
+ami_id = ""
