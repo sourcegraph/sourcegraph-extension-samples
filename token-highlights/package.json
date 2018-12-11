@@ -7,6 +7,11 @@
     "*"
   ],
   "main": "dist/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples",
+    "directory": "token-highlights"
+  },
   "scripts": {
     "sourcegraph:prepublish": "parcel build src/extension.ts"
   },
