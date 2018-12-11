@@ -13,7 +13,7 @@ run:
 	docker container run --rm -p 5000:5000 $(IMAGE):latest $(CMD)
 
 dev:
-	docker container run -e FLASK_DEBUG=1 -e PYTHONUNBUFFERED=1 --rm -p 5000:5000 -v $(CURDIR):/usr/src/app $(IMAGE):latest $(CMD)
+	docker container run -e PYTHONUNBUFFERED=1 --rm -p 5000:5000 -p 443:5000 -v $(CURDIR):/usr/src/app $(IMAGE):latest $(CMD)
 
 lint:
 	"$(MAKE)" run CMD="flake8 ./ \

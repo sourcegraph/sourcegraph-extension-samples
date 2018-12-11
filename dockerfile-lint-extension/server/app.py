@@ -1,4 +1,3 @@
-import logging
 import re
 from subprocess import run, PIPE
 
@@ -61,5 +60,4 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    logging.getLogger('flask_cors').level = logging.DEBUG
     app.run()
