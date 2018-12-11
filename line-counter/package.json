@@ -38,6 +38,11 @@
   "version": "0.0.0-DEVELOPMENT",
   "license": "MIT",
   "main": "dist/sourcegraph-line-counter.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples",
+    "directory": "line-counter"
+  },
   "scripts": {
     "tslint": "tslint -p tsconfig.json './src/**/*.ts'",
     "typecheck": "tsc -p tsconfig.json",

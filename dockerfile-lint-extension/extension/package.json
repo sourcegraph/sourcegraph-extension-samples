@@ -58,7 +58,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples/tree/master/dockerfile-lint-extension"
+    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples",
+    "directory": "dockerfile-lint-extension"
   },
   "browserslist": [
     "last 1 Chrome versions",
