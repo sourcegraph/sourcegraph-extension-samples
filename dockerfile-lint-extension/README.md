@@ -1,4 +1,4 @@
-# WIP: Dockerfile lint Sourcegraph extension
+# Dockerfile lint Sourcegraph extension
 
 ![dockerfilelintalpha](https://user-images.githubusercontent.com/133014/49771794-9e432400-fc9f-11e8-9ecf-cb768ef2fa99.gif)
 
@@ -6,14 +6,26 @@ An alpha [Sourcegraph extension](https://docs.sourcegraph.com/extensions/) to li
 
 It was developed to explore and showcase the [Sourcegraph extension API](https://docs.sourcegraph.com/extensions/authoring).
 
-## How it works
+## Try it on Sourcegraph.com
 
-It's a client server application.
+Head to [Sourcegraph.com](https://sourcegraph.com), create an account, then go to the [Dockerfile lint extension page](https://sourcegraph.com/extensions/ryan-blunden/dockerfile-lint) to enable it. This gets it [working on Sourcegraph](https://sourcegraph.com/github.com/freebroccolo/docker-haskell@master/-/blob/8.6/Dockerfile).
 
-## The client
+## Try it on GitHub
 
-The client is a [Sourcegraph extension](https://sourcegraph.com/extensions/ryan-blunden/dockerfile-lint) which runs on [Sourcegraph.com](https://sourcegraph.com) and GitHub, if you [install the Sourcegraph browser extension](https://docs.sourcegraph.com/integration/browser_extension). It runs in a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) for security and isolation.
+To lint Dockerfiles on GitHub, install the [Sourcegraph browser extension](https://docs.sourcegraph.com/integration/browser_extension), then:
 
-## The server
+- Click the Sourcegraph icon to the right of the address bar.
+- Click the gear ⚙️ icon.
+- Check the **Use extensions** checkbox.
 
-The server is a [Flask application](http://flask.pocoo.org/) with a `/lint` endpoint.
+<img alt="Enable extensions in the Sourcegraph browser extension" src="https://docs.sourcegraph.com/extensions/authoring/img/enable-sourcegraph-extensions.png" width="400px" />
+
+Then view a [Dockerfile](https://github.com/freebroccolo/docker-haskell/blob/master/8.6/Dockerfile) to confirm it's working.
+
+## How it works - client
+
+It's a client-server application.
+
+The client is a [Sourcegraph extension](https://sourcegraph.com/extensions/ryan-blunden/dockerfile-lint) which runs on [Sourcegraph.com](https://sourcegraph.com). It also works on GitHub when you [install the Sourcegraph browser extension](https://docs.sourcegraph.com/integration/browser_extension). The extension runs in a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) for security and isolation.
+
+The server is a [Flask application](http://flask.pocoo.org/) with a `/lint` endpoint that returns JSON when the body of the request contains the contents of a Dockerfile.
