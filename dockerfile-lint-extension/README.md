@@ -4,7 +4,7 @@
 
 An alpha [Sourcegraph extension](https://docs.sourcegraph.com/extensions/) to lint Dockerfiles on [Sourcegraph.com](https://sourcegraph.com) and GitHub using [Hadolint](https://github.com/hadolint/hadolint).
 
-It was developed to show more of the [Sourcegraph extension API](https://docs.sourcegraph.com/extensions/authoring) and an extension that required a self-hosted service.
+It was developed to explore and showcase the [Sourcegraph extension API](https://docs.sourcegraph.com/extensions/authoring).
 
 ## How it works
 
