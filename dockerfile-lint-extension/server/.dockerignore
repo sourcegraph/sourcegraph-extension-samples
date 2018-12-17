@@ -1,4 +1,10 @@
 README.md
-__pychache__
+__pycache__
 .pytest_cache
 manifests
+terraform
+.wget-hsts
+Dockerfile
+Makefile
+.dockerignore
+.wget-hsts

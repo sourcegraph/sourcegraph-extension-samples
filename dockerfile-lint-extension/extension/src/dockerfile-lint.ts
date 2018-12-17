@@ -1,10 +1,36 @@
-import { commands, configuration, ExtensionContext, Hover, languages, Position, TextDocument, workspace } from 'sourcegraph';
+import { commands, configuration, ExtensionContext, languages, Position, TextDocument } from 'sourcegraph';
 import { fetchResult } from './api';
 import { initializeSettings, setServerURL, Settings } from './settings';
-import { decorate, getHover } from './ui';
-import { activeEditor, memoizeAsync } from './utils'
+import { decorate, getHover, removeDecorations } from './ui';
+import { activeEditor } from './utils'
 
 export async function activate(ctx: ExtensionContext): Promise<void> {
+    async function initialize(editor = activeEditor()): Promise<any> {
+        if(!editor) {
+            return setTimeout(initialize, 100);
+        }
+
+        await initializeSettings()
+
+        if(configuration.get<Settings>().get('dockerfilelint.enabled')) {
+            await validate(editor.document)
+        }
+    }
+
+    async function onConfigurationUpdate(): Promise<void> {
+        const editor = activeEditor()
+        if(!editor) {
+            return
+        }
+
+        if(!configuration.get<Settings>().get('dockerfilelint.enabled')) {
+            removeDecorations()
+            return
+        }
+
+        await validate(editor.document)
+    }
+
     async function validate(document: TextDocument): Promise<void> {
         const result = await fetchResult(document.text)
         if(result) {
@@ -12,11 +38,13 @@ export async function activate(ctx: ExtensionContext): Promise<void> {
         }
     }
 
-    if(configuration.get<Settings>().get('dockerfilelint.enabled') === false) {
-        return
-    }
-
     ctx.subscriptions.add(
+        /**
+         *
+         * The `{ language: 'dockerfile'}` document selector is set because once the extension is activated,
+         * it is not deactivated when `activateConditions` are no longer true.
+         *
+         */
         languages.registerHoverProvider([{ language: 'dockerfile'}], {
             provideHover: async (document: TextDocument, position: Position) => {
                 const result = await fetchResult(document.text)
@@ -39,14 +67,9 @@ export async function activate(ctx: ExtensionContext): Promise<void> {
         })
     )
 
-    async function initialize(editor = activeEditor()): Promise<any> {
-        if(!editor) {
-            return setTimeout(initialize, 100);
-        }
-
-        await initializeSettings()
-        await validate(editor.document)
-    }
+    ctx.subscriptions.add(
+        configuration.subscribe(onConfigurationUpdate)
+    )
 
     await initialize()
 }

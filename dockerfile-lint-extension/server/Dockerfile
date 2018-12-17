@@ -35,4 +35,4 @@ HEALTHCHECK --interval=5s --timeout=5s --retries=3 CMD wget wget --no-check-cert
 EXPOSE 5000
 
 # TODO: Use a proper wsgi server instead of Flask's dev server
-CMD ["python", "-u", "-m", "flask", "run", "--host=0.0.0.0"]
+CMD ["python", "-u", "-m", "flask", "run", "--cert=adhoc", "--host=0.0.0.0"]

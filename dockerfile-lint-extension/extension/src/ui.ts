@@ -1,4 +1,4 @@
-import { DecorationAttachmentRenderOptions, Hover, MarkupKind, Position, Range, TextDocument, TextDocumentDecoration } from 'sourcegraph';
+import { Hover, MarkupKind, Position, Range, TextDocumentDecoration } from 'sourcegraph';
 import { Lint, LintResult } from './api';
 import { activeEditor } from './utils';
 
@@ -32,6 +32,13 @@ export function decorate(result: LintResult): void {
     editor.setDecorations(null, getDecorations(result))
 }
 
+export function removeDecorations(editor = activeEditor()): void {
+    if(!editor) {
+        return
+    }
+
+    editor.setDecorations(null, [])
+}
 export function getHover(dockerfile: string, position: Position, result: LintResult): Hover | null {
     const lineNumber = position.line + 1
     const content = (lint: Lint[]): string =>

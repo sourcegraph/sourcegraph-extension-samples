@@ -14,9 +14,7 @@
         "category": "Dockerfile linter",
         "command": "updateConfiguration",
         "commandArguments": [
-          [
-            "dockerfilelint.enabled"
-          ],
+          ["dockerfilelint.enabled"],
           "${!config.dockerfilelint.enabled}",
           null,
           "json"
@@ -33,12 +31,10 @@
       "editor/title": [],
       "commandPalette": [
         {
-          "action": "dockerfilelint.toggle",
-          "when": "resource && resource.language == 'dockerfile'"
+          "action": "dockerfilelint.toggle"
         },
         {
-          "action": "dockerfilelint.setURL",
-          "when": "resource && config.dockerfilelint.enabled"
+          "action": "dockerfilelint.setURL"
         }
       ]
     },
