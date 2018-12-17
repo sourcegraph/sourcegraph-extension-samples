@@ -40,15 +40,19 @@ export async function activate(ctx: ExtensionContext): Promise<void> {
 
     ctx.subscriptions.add(
         /**
-         *
          * The `{ language: 'dockerfile'}` document selector is set because once the extension is activated,
          * it is not deactivated when `activateConditions` are no longer true.
-         *
          */
         languages.registerHoverProvider([{ language: 'dockerfile'}], {
             provideHover: async (document: TextDocument, position: Position) => {
                 const result = await fetchResult(document.text)
-                if(!result) {
+                const enabled = configuration.get<Settings>().get('dockerfilelint.enabled')
+
+                /**
+                 * We check for enabled because `dockerfilelint.enabled` could be set to false
+                 * but the extension is still activated and therefore, hover events will still fire.
+                 */
+                if(!result || !enabled) {
                     return undefined
                 }
 

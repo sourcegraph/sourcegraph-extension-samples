@@ -14,7 +14,7 @@
         "category": "Dockerfile linter",
         "command": "updateConfiguration",
         "commandArguments": [
-          ["dockerfilelint.enabled"],
+          "dockerfilelint.enabled",
           "${!config.dockerfilelint.enabled}",
           null,
           "json"
@@ -34,7 +34,8 @@
           "action": "dockerfilelint.toggle"
         },
         {
-          "action": "dockerfilelint.setURL"
+          "action": "dockerfilelint.setURL",
+          "when": "resource"
         }
       ]
     },
