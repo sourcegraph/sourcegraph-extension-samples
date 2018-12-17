@@ -30,7 +30,7 @@ USER ${UID}:${GID}
 
 COPY . .
 
-HEALTHCHECK --interval=5s --timeout=5s --retries=3 CMD wget localhost:5000/healthz -q -O - > /dev/null 2>&1 || exit 1
+HEALTHCHECK --interval=5s --timeout=5s --retries=3 CMD wget wget --no-check-certificate https://localhost:5000/healthz -q -O - > /dev/null 2>&1 || exit 1
 
 EXPOSE 5000
 
