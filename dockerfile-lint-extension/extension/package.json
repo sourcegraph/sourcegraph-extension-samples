@@ -49,6 +49,7 @@
     "typecheck": "tsc -p tsconfig.json",
     "build": "parcel build --out-file dist/dockerfile-lint.js src/dockerfile-lint.ts",
     "serve": "parcel serve --no-hmr --out-file dist/dockerfile-lint.js src/dockerfile-lint.ts",
+    "dev": "src ext publish -url http://localhost:1234/dockerfile-lint.js && npm run serve",
     "watch:typecheck": "tsc -p tsconfig.json -w",
     "watch:build": "tsc -p tsconfig.dist.json -w",
     "sourcegraph:prepublish": "npm run build"

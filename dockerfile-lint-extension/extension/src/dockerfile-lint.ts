@@ -5,10 +5,8 @@ import { decorate, getHover, removeDecorations } from './ui';
 import { activeEditor } from './utils'
 
 export async function activate(ctx: ExtensionContext): Promise<void> {
-    async function initialize(editor = activeEditor()): Promise<any> {
-        if(!editor) {
-            return setTimeout(initialize, 100);
-        }
+    async function initialize(): Promise<any> {
+        const editor = await activeEditor()
 
         await initializeSettings()
 
@@ -18,10 +16,7 @@ export async function activate(ctx: ExtensionContext): Promise<void> {
     }
 
     async function onConfigurationUpdate(): Promise<void> {
-        const editor = activeEditor()
-        if(!editor) {
-            return
-        }
+        const editor = await activeEditor()
 
         if(!configuration.get<Settings>().get('dockerfilelint.enabled')) {
             removeDecorations()
@@ -62,7 +57,8 @@ export async function activate(ctx: ExtensionContext): Promise<void> {
     )
 
     ctx.subscriptions.add(
-        commands.registerCommand('dockerfilelint.setServerURL', async (editor = activeEditor()) => {
+        commands.registerCommand('dockerfilelint.setServerURL', async () => {
+            const editor = await activeEditor()
             if(!editor || await setServerURL() === null) {
                 return
             }

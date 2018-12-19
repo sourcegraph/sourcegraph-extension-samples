@@ -23,20 +23,13 @@ function getDecorations(result: LintResult): TextDocumentDecoration[] {
     )
 }
 
-export function decorate(result: LintResult): void {
-    const editor = activeEditor()
-    if(!editor) {
-        return
-    }
-
+export async function decorate(result: LintResult): Promise<void> {
+    const editor = await activeEditor()
     editor.setDecorations(null, getDecorations(result))
 }
 
-export function removeDecorations(editor = activeEditor()): void {
-    if(!editor) {
-        return
-    }
-
+export async function removeDecorations(): Promise<void> {
+    const editor = await activeEditor()
     editor.setDecorations(null, [])
 }
 export function getHover(dockerfile: string, position: Position, result: LintResult): Hover | null {

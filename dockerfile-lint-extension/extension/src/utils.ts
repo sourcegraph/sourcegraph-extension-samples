@@ -1,9 +1,26 @@
 import { app, CodeEditor, Unsubscribable } from 'sourcegraph'
 
-export function activeEditor(): CodeEditor | undefined {
-    return app.activeWindow
-        ? app.activeWindow.visibleViewComponents[0]
-        : undefined
+async function sleep(milliseconds: number): Promise<void> {
+    return new Promise<void>(resolve => setTimeout(resolve, milliseconds))
+}
+
+export function activeEditor(): Promise<CodeEditor> {
+    let retries = 5
+
+    const getActiveEditor = async (): Promise<CodeEditor> => {
+        if (retries-- === 0) {
+            throw new Error('Could not activate: no active editor')
+        }
+        const editor: CodeEditor | null = app.activeWindow ? app.activeWindow.visibleViewComponents[0] : null
+        if (editor) {
+            return editor
+        } else {
+            await sleep(500)
+            return await getActiveEditor()
+        }
+    }
+
+    return getActiveEditor()
 }
 
 /**
@@ -32,35 +49,3 @@ export function memoizeAsync<P, T>(
         return p
     }
 }
-
-// function registerWhileEnabled<T>(
-//     register: () => Unsubscribable
-// ): Unsubscribable {
-//     let registration: Unsubscribable | undefined
-//     return from(settingsSubscribable)
-//         .pipe(
-//             map(settings => settings['basicCodeIntel.enabled']),
-//             distinctUntilChanged((a, b) => Boolean(a) === Boolean(b)),
-//             map(enabled => {
-//                 if (enabled) {
-//                     registration = register()
-//                 } else {
-//                     if (registration) {
-//                         registration.unsubscribe()
-//                         registration = undefined
-//                     } else {
-//                         console.debug(
-//                             'Not unsubscribing provider: no registration found.'
-//                         )
-//                     }
-//                 }
-//             }),
-//             finalize(() => {
-//                 if (registration) {
-//                     registration.unsubscribe()
-//                     registration = undefined
-//                 }
-//             })
-//         )
-//         .subscribe()
-// }
