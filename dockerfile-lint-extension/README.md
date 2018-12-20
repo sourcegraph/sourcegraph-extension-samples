@@ -1,8 +1,8 @@
 # Dockerfile lint Sourcegraph extension
 
-An alpha [Sourcegraph extension](https://docs.sourcegraph.com/extensions/) to lint Dockerfiles on [Sourcegraph.com](https://sourcegraph.com) and GitHub using [Hadolint](https://github.com/hadolint/hadolint).
+A [Sourcegraph extension](https://docs.sourcegraph.com/extensions/) to lint Dockerfiles on [Sourcegraph.com](https://sourcegraph.com) and GitHub using [Hadolint](https://github.com/hadolint/hadolint).
 
-![dockerfilelintalpha](![dockerfile lint github sourcegraph](https://user-images.githubusercontent.com/133014/49892179-2db21980-fdfd-11e8-9076-ef9f4bfae01a.gif))
+![dockerfile lint github sourcegraph](https://user-images.githubusercontent.com/133014/49892179-2db21980-fdfd-11e8-9076-ef9f4bfae01a.gif)
 
 ## Try it on Sourcegraph.com
 
