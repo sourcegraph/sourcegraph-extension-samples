@@ -1,5 +1,3 @@
-# WIP: Dockerfile lint
-
 # Dockerfile lint Sourcegraph extension
 
 A [Sourcegraph extension](https://docs.sourcegraph.com/extensions/) to lint Dockerfiles on [Sourcegraph.com](https://sourcegraph.com) and GitHub using [Hadolint](https://github.com/hadolint/hadolint).
