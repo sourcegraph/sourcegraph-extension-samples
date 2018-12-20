@@ -4,7 +4,7 @@ async function sleep(milliseconds: number): Promise<void> {
     return new Promise<void>(resolve => setTimeout(resolve, milliseconds))
 }
 
-export function activeWindow(): Promise<Window> {
+export async function activeWindow(): Promise<Window> {
     let retries = 5
 
     const getActiveWindow = async (): Promise<Window> => {
