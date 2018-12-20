@@ -9,7 +9,7 @@ export async function activeWindow(): Promise<Window> {
 
     const getActiveWindow = async (): Promise<Window> => {
         if (retries-- === 0) {
-            throw new Error('Could not activate: no active editor')
+            throw new Error('Could not activate: no active window')
         }
         const window: Window | null  = app.activeWindow ? app.activeWindow : null
         if (window) {
