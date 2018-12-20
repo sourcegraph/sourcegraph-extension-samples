@@ -1,5 +1,6 @@
 
 import { app, configuration } from 'sourcegraph';
+import { activeWindow } from './utils'
 
 interface AllSettings {
     'dockerfilelint.enabled': boolean
@@ -19,11 +20,7 @@ export async function initializeSettings():Promise<void> {
     const URL_PROMPT = 'Enable Dockerfile linting by setting the server URL from the command palette.'
 
     // Wait until window exists as we need it prompting for the Dockerfile lint server URL
-    const window = app.activeWindow || undefined
-    if(!window) {
-        setTimeout(initializeSettings, 100)
-        return
-    }
+    const window = await activeWindow()
 
     for (const settingKey of Object.keys(DEFAULT_SETTINGS)) {
         const localValue = configuration.get<Settings>().get(settingKey as keyof AllSettings)

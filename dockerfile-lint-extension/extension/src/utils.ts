@@ -1,26 +1,31 @@
-import { app, CodeEditor, Unsubscribable } from 'sourcegraph'
+import { app, CodeEditor, Window } from 'sourcegraph'
 
 async function sleep(milliseconds: number): Promise<void> {
     return new Promise<void>(resolve => setTimeout(resolve, milliseconds))
 }
 
-export function activeEditor(): Promise<CodeEditor> {
+export function activeWindow(): Promise<Window> {
     let retries = 5
 
-    const getActiveEditor = async (): Promise<CodeEditor> => {
+    const getActiveWindow = async (): Promise<Window> => {
         if (retries-- === 0) {
             throw new Error('Could not activate: no active editor')
         }
-        const editor: CodeEditor | null = app.activeWindow ? app.activeWindow.visibleViewComponents[0] : null
-        if (editor) {
-            return editor
+        const window: Window | null  = app.activeWindow ? app.activeWindow : null
+        if (window) {
+            return window
         } else {
             await sleep(500)
-            return await getActiveEditor()
+            return await getActiveWindow()
         }
     }
 
-    return getActiveEditor()
+    return getActiveWindow()
+}
+
+export async function activeEditor(): Promise<CodeEditor> {
+    const window = await activeWindow()
+    return window.visibleViewComponents[0]
 }
 
 /**

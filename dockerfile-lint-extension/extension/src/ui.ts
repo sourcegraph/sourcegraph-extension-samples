@@ -35,7 +35,7 @@ export async function removeDecorations(): Promise<void> {
 export function getHover(dockerfile: string, position: Position, result: LintResult): Hover | null {
     const lineNumber = position.line + 1
     const content = (lint: Lint[]): string =>
-        ['# Dockerfile lint recommendations\n---\n'].concat(lint.map(lint => lint.lint)).join('\n- \n')
+        ['# **Dockerfile lint recommendations**\n---\n'].concat(lint.map(lint => lint.lint)).join('\n- \n')
 
     if(!result || !result.lintForLine[lineNumber]) {
         return null
