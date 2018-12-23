@@ -70,7 +70,7 @@
     "@sourcegraph/tsconfig": "^3.0.0",
     "@sourcegraph/tslint-config": "^12.0.0",
     "parcel-bundler": "^1.10.3",
-    "sourcegraph": "^19.3.0",
+    "sourcegraph": "^20.0.0",
     "tslint": "^5.11.0",
     "typescript": "^3.1.6"
   }
