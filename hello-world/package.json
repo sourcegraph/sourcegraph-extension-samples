@@ -3,6 +3,11 @@
   "publisher": "sqs",
   "title": "Hello, world!",
   "description": "Shows a friendly 'Hello, world!' message when you hover over code.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples",
+    "directory": "hello-world"
+  },
   "activationEvents": [
     "*"
   ],

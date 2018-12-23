@@ -5,7 +5,8 @@
   "publisher": "sourcegraph",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples"
+    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples",
+    "directory": "skeleton-language-extension"
   },
   "activationEvents": [
     "*"
