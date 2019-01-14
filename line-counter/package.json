@@ -47,7 +47,8 @@
     "tslint": "tslint -p tsconfig.json './src/**/*.ts'",
     "typecheck": "tsc -p tsconfig.json",
     "build": "parcel build --out-file dist/sourcegraph-line-counter.js src/sourcegraph-line-counter.ts",
-    "serve": "parcel serve --no-hmr --out-file dist/sourcegraph-line-counter.js src/sourcegraph-line-counter.ts",
+    "symlink-package": "mkdirp dist && lnfs ./package.json ./dist/package.json",
+    "serve": "npm run symlink-package && parcel serve --no-hmr --out-file dist/sourcegraph-line-counter.js src/sourcegraph-line-counter.ts",
     "watch:typecheck": "tsc -p tsconfig.json -w",
     "watch:build": "tsc -p tsconfig.dist.json -w",
     "sourcegraph:prepublish": "npm run build"
@@ -61,6 +62,8 @@
   "devDependencies": {
     "@sourcegraph/tsconfig": "^3.0.0",
     "@sourcegraph/tslint-config": "^12.3.1",
+    "lnfs-cli": "^2.1.0",
+    "mkdirp": "^0.5.1",
     "parcel-bundler": "^1.10.3",
     "sourcegraph": "^20.1.0",
     "tslint": "^5.11.0",
