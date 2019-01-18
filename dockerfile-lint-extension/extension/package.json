@@ -3,6 +3,9 @@
   "name": "dockerfile-lint",
   "title": "WIP: Lint a Dockerfile using Hadolint",
   "description": "Lint a Dockerfile using Hadolint",
+  "categories": [
+    "Linters"
+  ],
   "publisher": "ryan-blunden",
   "activationEvents": [
     "onLanguage:dockerfile"
