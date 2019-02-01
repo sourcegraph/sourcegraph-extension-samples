@@ -35,7 +35,7 @@ const highlightMatchingLines = (text, token) => {
               backgroundColor: "khaki"
             },
             dark: {
-              backgroundColor: "#504821"
+              backgroundColor: "rgba(217,72,15,.5)"
             }
           } as sourcegraph.TextDocumentDecoration)
       )
