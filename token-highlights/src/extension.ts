@@ -24,17 +24,25 @@ const highlightMatchingLines = (text, token) => {
       .split("\n")
       .map((line, i) => [i, line] as [number, string])
       .filter(([_, line]) => new RegExp("\\b" + token + "\\b").test(line))
-      .map(([i, _]) => ({
-        range: new sourcegraph.Range(
-          new sourcegraph.Position(i, 0),
-          new sourcegraph.Position(i, 0)
-        ),
-        backgroundColor: "khaki"
-      }))
+      .map(
+        ([i, _]) =>
+          ({
+            range: new sourcegraph.Range(
+              new sourcegraph.Position(i, 0),
+              new sourcegraph.Position(i, 0)
+            ),
+            light: {
+              backgroundColor: "khaki"
+            },
+            dark: {
+              backgroundColor: "#504821"
+            }
+          } as sourcegraph.TextDocumentDecoration)
+      )
   );
 };
 
-export function activate(ctx:sourcegraph.ExtensionContext): void {
+export function activate(ctx: sourcegraph.ExtensionContext): void {
   ctx.subscriptions.add(
     sourcegraph.languages.registerHoverProvider(["*"], {
       provideHover: (doc, pos) => {
@@ -47,5 +55,5 @@ export function activate(ctx:sourcegraph.ExtensionContext): void {
         return null;
       }
     })
-  )
+  );
 }
