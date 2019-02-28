@@ -1,12 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/sourcegraph/sourcegraph/master/shared/src/schema/extension.schema.json",
   "name": "dockerfile-lint",
-  "title": "WIP: Lint a Dockerfile using Hadolint",
+  "title": "Dockerfile Linter",
   "description": "Lint a Dockerfile using Hadolint",
   "categories": [
     "Linters"
   ],
-  "publisher": "ryan-blunden",
+  "publisher": "sourcegraph",
   "activationEvents": [
     "onLanguage:dockerfile"
   ],
