@@ -13,9 +13,13 @@
   ],
   "main": "dist/extension.js",
   "scripts": {
+    "symlink-package": "mkdirp dist && lnfs ./package.json ./dist/package.json",
+    "serve": "npm run symlink-package && parcel serve --no-hmr --out-file dist/extension.js src/extension.ts",
     "sourcegraph:prepublish": "parcel build src/extension.ts"
   },
   "devDependencies": {
+    "lnfs-cli": "^2.1.0",
+    "mkdirp": "^0.5.1",
     "parcel-bundler": "^1.10.3",
     "sourcegraph": "^20.1.0",
     "typescript": "^3.2.1"
