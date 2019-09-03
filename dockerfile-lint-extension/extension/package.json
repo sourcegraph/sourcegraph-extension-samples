@@ -73,7 +73,7 @@
   ],
   "devDependencies": {
     "@sourcegraph/tsconfig": "^3.0.0",
-    "@sourcegraph/tslint-config": "^12.3.1",
+    "@sourcegraph/tslint-config": "^13.3.0",
     "lnfs-cli": "^2.1.0",
     "mkdirp": "^0.5.1",
     "parcel-bundler": "^1.10.3",
