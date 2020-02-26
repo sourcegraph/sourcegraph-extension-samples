@@ -1,0 +1,94 @@
+{
+  "name": "sourcegraph-search-form-view",
+  "publisher": "sourcegraph",
+  "description": "Shows a helpful search form.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/sourcegraph-extension-samples",
+    "directory": "search-form-view"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "forms": [
+      {
+        "id": "searchHelperSample.form",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "query": {
+              "title": "Query",
+              "description": "Supports regexp and other Sourcegraph search query syntax",
+              "type": "string",
+              "default": "foo"
+            },
+            "version": {
+              "title": "Release version",
+              "description": "Search in the commit in each repository that corresponds to the selected release version",
+              "type": "string",
+              "enum": [
+                "latest",
+                "v21",
+                "v20"
+              ],
+              "default": "latest"
+            },
+            "language": {
+              "title": "Language",
+              "type": "string",
+              "enum": [
+                "",
+                "java",
+                "python",
+                "javascript",
+                "cpp"
+              ],
+              "enumNames": [
+                "All",
+                "Java",
+                "Python",
+                "JavaScript",
+                "C++"
+              ],
+              "default": ""
+            }
+          }
+        },
+        "submit": {
+          "command": "searchHelperSample.submit",
+          "label": "Search"
+        },
+        "change": "searchHelperSample.change"
+      }
+    ],
+    "views": [
+      {
+        "id": "searchHelperSample.view",
+        "title": "Acme Corp release search",
+        "form": "searchHelperSample.form"
+      }
+    ]
+  },
+  "main": "dist/extension.js",
+  "scripts": {
+    "symlink-package": "mkdirp dist && lnfs ./package.json ./dist/package.json",
+    "serve": "npm run symlink-package && parcel serve --no-hmr --out-file dist/extension.js src/extension.ts",
+    "sourcegraph:prepublish": "parcel build src/extension.ts"
+  },
+  "devDependencies": {
+    "@sourcegraph/prettierrc": "^3.0.2",
+    "@sourcegraph/tsconfig": "^4.0.0",
+    "@types/lodash": "^4.14.149",
+    "lnfs-cli": "^2.1.0",
+    "mkdirp": "^0.5.1",
+    "parcel-bundler": "^1.12.4",
+    "sourcegraph": "^23.1.0",
+    "typescript": "^3.8.2"
+  },
+  "dependencies": {
+    "lodash.escaperegexp": "^4.1.2",
+    "rxjs": "^6.5.4"
+  }
+}
