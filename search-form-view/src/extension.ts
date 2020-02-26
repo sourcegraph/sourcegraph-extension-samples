@@ -90,7 +90,7 @@ export function activate(ctx: sourcegraph.ExtensionContext): void {
                         .map(([repo, commit]) => `- ${repo} @ ${commit}`)
                         .join('\n')
             } else {
-                view.title = 'Loading...'
+                view.title = ''
                 view.content = ''
             }
         })

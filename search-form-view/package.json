@@ -90,5 +90,8 @@
   "dependencies": {
     "lodash.escaperegexp": "^4.1.2",
     "rxjs": "^6.5.4"
-  }
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ]
 }
