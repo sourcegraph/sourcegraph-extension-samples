@@ -45,7 +45,7 @@
     "lnfs-cli": "^2.1.0",
     "mkdirp": "^0.5.1",
     "parcel-bundler": "^1.11.0",
-    "sourcegraph": "^20.1.0",
+    "sourcegraph": "^23.2.0",
     "tslint": "^5.12.0",
     "typescript": "^3.2.2"
   }
