@@ -1,5 +1,14 @@
 # Sourcegraph extension samples
 
+## ⚠️ Deprecation notice
+
+**Sourcegraph extensions have been deprecated with the September 2022 Sourcegraph
+release. [Learn more](https://docs.sourcegraph.com/extensions/deprecation).**
+
+The repo and the docs below are kept to support older Sourcegraph versions.
+
+## Description
+
 ![](https://user-images.githubusercontent.com/1976/45107396-53d56880-b0ee-11e8-96e9-ca83e991101c.png)
 
 Take your Sourcegraph extension development further by viewing our sample extensions. Each demonstrates different capabilities of the [Sourcegraph extension API](https://docs.sourcegraph.com/extensions).
