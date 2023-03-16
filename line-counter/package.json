@@ -60,7 +60,7 @@
     "last 1 Safari versions"
   ],
   "devDependencies": {
-    "@sourcegraph/tsconfig": "^3.0.0",
+    "@sourcegraph/tsconfig": "^4.0.1",
     "@sourcegraph/tslint-config": "^12.3.1",
     "lnfs-cli": "^2.1.0",
     "mkdirp": "^0.5.1",
