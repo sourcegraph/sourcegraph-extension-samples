@@ -15,7 +15,7 @@
     "sourcegraph:prepublish": "parcel build --no-minify src/extension.ts"
   },
   "devDependencies": {
-    "@sourcegraph/tsconfig": "^3.0.0",
+    "@sourcegraph/tsconfig": "^4.0.1",
     "@sourcegraph/tslint-config": "^12.3.1",
     "@types/lru-cache": "4.1.1",
     "parcel-bundler": "^1.10.3",
